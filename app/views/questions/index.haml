@@ -1,0 +1,10 @@
+%h1 Questions
+
+%ul#questions
+  - @questions.each do |question|
+    %li.question
+      =RedCloth.new(question.label).to_html
+      %ol
+        - question.answers.each do |answer|
+          %li
+            =answer.label

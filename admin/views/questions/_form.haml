@@ -1,0 +1,29 @@
+.group
+  =f.label :label
+  =f.error_message_on :label
+  %p
+    =f.text_area :label, :cols => 100, :rows => 5, :class => :text_area
+
+.group
+  =f.label :answers
+  =f.error_message_on :answers
+
+  %div#answers
+    - f.fields_for :answers do |a|
+      - unless a.object.created_at
+        %br
+        %label New answer:
+      %p
+        =a.text_area :label, :cols => 100, :rows => 5, :class => :text_area
+        %br
+        %span
+          Correct answer?
+          =a.check_box :correct, :class => :check_box
+        - if a.object.created_at
+          %span
+            Delete answer?
+            =a.check_box :_destroy, :class => :check_box
+
+.group.navform.wat-cf
+  =f.submit pat(:save), :class => :button
+  =f.submit pat(:cancel), :onclick => "window.location='#{url(:questions, :index)}';return false", :class => :button
