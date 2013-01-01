@@ -7,6 +7,7 @@ Admin.controllers :questions do
 
   get :new do
     @question = Question.new
+    @question.answers.build
     render 'questions/new'
   end
 
@@ -16,6 +17,8 @@ Admin.controllers :questions do
       flash[:notice] = 'Question was successfully created.'
       redirect url(:questions, :edit, :id => @question.id)
     else
+      @question.answers.build
+      flash[:error] = 'Question was not created.'
       render 'questions/new'
     end
   end

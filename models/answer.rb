@@ -7,7 +7,10 @@ class Answer
   field :label, :type => String
   field :correct, :type => Boolean, default: false
 
-  # validates_presence_of :label
+  validates_presence_of :label
+  validates_length_of :label, :minimum => 1
+
+  scope :correct, where(correct: true)
 
   # You can define indexes on documents using the index macro:
   # index :field <, :unique => true>

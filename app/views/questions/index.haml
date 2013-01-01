@@ -1,10 +1,11 @@
-%h1 Questions
+%div
+  %h1 Questions
 
-%ul#questions
-  - @questions.each do |question|
-    %li.question
-      =RedCloth.new(question.label).to_html
-      %ol
-        - question.answers.each do |answer|
-          %li
-            =answer.label
+  - form_tag '/questions/check', :method => :post do
+
+    %ul#questions
+      - @questions.each do |question|
+        %li.question
+          = render 'questions/_question', {}, question: question
+
+    =submit_tag 'Check', class: 'btn btn-primary'

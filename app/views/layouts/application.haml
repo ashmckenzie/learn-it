@@ -2,8 +2,9 @@
 %html{:lang => "en", :xmlns => "http://www.w3.org/1999/xhtml"}
   %head
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
     %title Learn It
-    =stylesheet_link_tag 'bootstrap-responsive'
+    =stylesheet_link_tag 'bootstrap', 'bootstrap-responsive'
     =javascript_include_tag 'jquery.min', 'bootstrap.min'
     %link{href: "/assets/application.css", media: "screen", rel: "stylesheet", type: "text/css"}
     %script{src: "/assets/application.js", type: "text/javascript"}

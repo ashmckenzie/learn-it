@@ -5,14 +5,19 @@
     =f.text_area :label, :cols => 100, :rows => 5, :class => :text_area
 
 .group
-  =f.label :answers
+  =f.label :enabled
+  =f.error_message_on :enabled
+  =f.check_box :enabled, :class => :check_box
+
+.group
   =f.error_message_on :answers
 
   %div#answers
     - f.fields_for :answers do |a|
-      - unless a.object.created_at
+      - if @question.created_at && !a.object.created_at
         %br
         %label New answer:
+        =a.error_message_on :label
       %p
         =a.text_area :label, :cols => 100, :rows => 5, :class => :text_area
         %br

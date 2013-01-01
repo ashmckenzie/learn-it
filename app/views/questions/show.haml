@@ -1,0 +1,10 @@
+%div
+  %h1 Question
+
+  - form_tag '/questions/check', :method => :post do
+
+    %ul#questions
+      %li.question
+        = render 'questions/_question', {}, question: @question
+
+    =submit_tag 'Check', class: 'btn btn-primary'
